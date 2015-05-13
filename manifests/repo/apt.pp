@@ -20,15 +20,25 @@ class rabbitmq::repo::apt(
     default => 'present',
   }
 
+  $include_hash = {
+    'src' => $include_src,
+  }
+
+  $key_hash = {
+    'id'      => $key,
+    'content' => $key_content,
+    'source'  => $key_source,
+  }
+
+  include ::apt
+
   apt::source { 'rabbitmq':
     ensure      => $ensure_source,
     location    => $location,
     release     => $release,
     repos       => $repos,
-    include_src => $include_src,
-    key         => $key,
-    key_source  => $key_source,
-    key_content => $key_content,
+    include     => $include_hash,
+    key         => $key_hash,
   }
 
   if $pin != '' {

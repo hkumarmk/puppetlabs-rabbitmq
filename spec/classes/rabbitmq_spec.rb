@@ -1055,8 +1055,11 @@ rabbitmq hard nofile 1234
           'location'    => 'http://www.rabbitmq.com/debian/',
           'release'     => 'testing',
           'repos'       => 'main',
-          'include_src' => false,
-          'key'         => 'F78372A06FF50C80464FC1B4F7B8CEA6056E8E56'
+          'include'     => { 'src' => false },
+          'key'         => {  "id"=>"F78372A06FF50C80464FC1B4F7B8CEA6056E8E56",
+                              "content"=>:undef,
+                              "source"=>"http://www.rabbitmq.com/rabbitmq-signing-key-public.asc"
+                           }
         ) }
       end
     end
@@ -1069,8 +1072,11 @@ rabbitmq hard nofile 1234
           'location'    => 'http://www.rabbitmq.com/debian/',
           'release'     => 'testing',
           'repos'       => 'main',
-          'include_src' => false,
-          'key'         => 'F78372A06FF50C80464FC1B4F7B8CEA6056E8E56'
+          'include'     => { 'src' => false },
+          'key'         => {  "id"=>"F78372A06FF50C80464FC1B4F7B8CEA6056E8E56",
+                              "content"=>:undef,
+                              "source"=>"http://www.rabbitmq.com/rabbitmq-signing-key-public.asc"
+                           }
         ) }
 
         it { should contain_apt__pin('rabbitmq').with(
